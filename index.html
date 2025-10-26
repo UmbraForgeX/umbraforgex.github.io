@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>UmbraForgeX — Heartbeat of Steel</title>
+<style>
+  :root{
+    --bg:#07070b;
+    --card:#0f1114;
+    --accent:#00E5FF;
+    --muted:#9aa3ad;
+    --glow: 0 0 30px rgba(0,229,255,.12);
+    --mono: "Helvetica Neue", Inter, Arial, sans-serif;
+  }
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,#03030a 0%, #0a0a0f 60%);color:#e6eef3;font-family:var(--mono);}
+  .center{display:flex;align-items:center;justify-content:center;}
+  header{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;}
+  .logo{font-weight:800;letter-spacing:1px;font-size:18px;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
+  h1{font-size:36px;margin:0 0 12px;line-height:1.02}
+  p.lead{font-size:16px;color:var(--muted);max-width:820px;margin:0 0 22px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .btn{background:transparent;border:1px solid rgba(0,229,255,.18);padding:12px 20px;border-radius:10px;color:var(--accent);cursor:pointer;text-decoration:none;box-shadow:var(--glow)}
+  .btn.primary{background:linear-gradient(90deg, rgba(0,229,255,.12), rgba(0,255,200,.06));border:1px solid rgba(0,229,255,.35)}
+  /* flashline */
+  .flash-wrap{height:36px;overflow:hidden;margin:22px 0}
+  .flashline{font-weight:700;font-size:18px;opacity:.95;min-height:36px}
+  /* heartbeat visual */
+  .heart-visual{width:260px;height:260px;border-radius:50%;display:grid;place-items:center;margin:28px 0;position:relative}
+  .ring{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 60px rgba(0,229,255,.06);transform:scale(.96);}
+  .core{width:110px;height:110px;border-radius:50%;background:linear-gradient(180deg,#0ff5ff22,#005c6b22);display:grid;place-items:center;backdrop-filter:blur(2px);border:1px solid rgba(0,229,255,.12)}
+  .pulse { width:6px;height:40px;background:linear-gradient(180deg,var(--accent),#06b5c7); border-radius:10px; transform-origin:center bottom; animation:pulse 1s infinite linear;}
+  @keyframes pulse{0%{transform:scaleY(.5)}25%{transform:scaleY(1.6)}50%{transform:scaleY(.9)}75%{transform:scaleY(1.6)}100%{transform:scaleY(.5)}}
+  /* grid sections */
+  main{padding:48px 20px;max-width:1100px;margin:0 auto}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;align-items:center}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,.03)}
+  footer{padding:28px;text-align:center;color:var(--muted);font-size:13px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}.heart-visual{display:none}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">UMBRAFORGEX</div>
+  <h1>Heartbeat of Steel — AI that defends budgets and rebuilds lives</h1>
+  <p class="lead">We find lost revenue, convert recovery into public benefit, and train communities for real, sustainable wages. Industry-grade automation with a human mission.</p>
+
+  <div class="flash-wrap" aria-hidden="true">
+    <div id="flash" class="flashline"></div>
+  </div>
+
+  <div class="heart-visual" role="img" aria-label="Heartbeat of steel animation">
+    <div class="ring"></div>
+    <div class="core"><div class="pulse"></div></div>
+  </div>
+
+  <div class="cta-row">
+    <button class="btn primary" id="joinBtn">Join the Forge — Get early access</button>
+    <a class="btn" href="#how">How it works</a>
+  </div>
+</header>
+
+<main id="how">
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h3>THE PROBLEM</h3>
+        <p>$700B lost in avoidable errors, outdated systems, and opaque processes. That money should fund education, jobs, and safety nets — not vanish into inefficiency.</p>
+      </div>
+      <div style="height:18px"></div>
+      <div class="card">
+        <h3>OUR SOLUTION</h3>
+        <p>AI-first detection + automated recovery + legally-ready reporting. We return dollars to communities, invest in living-wage training, and publish verifiable results.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h3>HOW IT WORKS</h3>
+        <ol>
+          <li><strong>Detect</strong> — autonomous scanning of public expenditure, tax records & transaction patterns.</li>
+          <li><strong>Recover</strong> — automated claim packages and human-grade legal handoff.</li>
+          <li><strong>Reinvest</strong> — results fund community training, job pilots, and public transparency.</li>
+        </ol>
+      </div>
+      <div style="height:18px"></div>
+      <div class="card">
+        <h3>GET INVOLVED</h3>
+        <p>Sign up to join the founding cohort: shape pilots, claim priorities, and get early access to tools and dashboards.</p>
+        <div style="margin-top:12px">
+          <input id="email" placeholder="your email" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.04);width:66%;background:transparent;color:inherit" />
+          <button class="btn" id="emailBtn">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  UmbraForgeX • Built for scale, designed for people. • <a href="#" style="color:var(--accent)">Privacy</a> • <a href="#" style="color:var(--accent)">Contact</a>
+</footer>
+
+<script>
+  // Flashlines
+  const flashLines = [
+    "$700,000,000,000 LOST EVERY YEAR.",
+    "WE’RE BUILDING THE AI HEARTBEAT OF STEEL.",
+    "TAX LEAKS. FRAUD. BROKEN SYSTEMS. FIXED.",
+    "A NEW ARM OF DEFENSE, BUILT IN CODE.",
+    "EDUCATION THAT LIFTS FAMILIES TO A LIVING WAGE.",
+    "HOMELAND-STRENGTH THINKING. PEOPLE-FIRST RESULT.",
+    "AI DOESN’T TAKE — IT GIVES YOU A FUTURE.",
+    "TRANSPARENT. AUDITABLE. UNSTOPPABLE.",
+    "JOIN THE FORGE — BE PART OF THE SOLUTION."
+  ];
+  let idx=0, flashEl=document.getElementById('flash');
+  function nextFlash(){
+    flashEl.textContent = flashLines[idx];
+    idx = (idx+1)%flashLines.length;
+  }
+  // initial and interval
+  nextFlash();
+  setInterval(nextFlash, 450);
+
+  // simple email collection (stores locally; replace with your endpoint)
+  const emailBtn=document.getElementById('emailBtn');
+  const joinBtn=document.getElementById('joinBtn');
+  function collectEmail(addr){
+    if(!addr || !addr.includes('@')) { alert('Enter a valid email'); return; }
+    // store in localStorage so you can copy later
+    const list = JSON.parse(localStorage.getItem('ufx_emails')||'[]');
+    list.push({email:addr,ts:Date.now()});
+    localStorage.setItem('ufx_emails', JSON.stringify(list));
+    alert('Thanks — you are on the founding list. We saved your email locally so you can move it to Mailchimp or a CSV.');
+  }
+  emailBtn.addEventListener('click', ()=>collectEmail(document.getElementById('email').value));
+  joinBtn.addEventListener('click', ()=>{ const em=prompt('Enter your email to join the founding list'); collectEmail(em); });
+</script>
+</body>
+</html>
